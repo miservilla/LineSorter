@@ -37,7 +37,7 @@ public class LineSorter {
 
         Collections.sort(lines);
 
-        lines.sort((s1, s2) -> Math.abs(s1.length() - "intelligent".length()) - Math.abs(s2.length() - "intelligent".length()));
+        lines.sort((s1, s2) -> Math.abs(s1.length() - "intelligent".length()) - Math.abs(s2.length() - "intelligent".length())); //http://stackoverflow.com/questions/7575761/sort-arraylist-of-strings-by-length
         try (BufferedWriter writer = Files.newBufferedWriter(target, charset))
         {
             Iterator<String> iterator = lines.iterator();
