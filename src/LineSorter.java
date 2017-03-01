@@ -5,10 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * @author Michael Servilla
@@ -17,9 +14,10 @@ import java.util.Iterator;
 public class LineSorter {
 
     public static void main(String[] args) throws IOException {
-        Path source = Paths.get("testinput.txt");
+
+        Path source = Paths.get("testinput.txt"); //args[0], use args[0] for source text file, was "testinput.txt"
         System.out.println(source.getFileName());
-        Path target = Paths.get("testoutput.txt");
+        Path target = Paths.get("testoutput.txt"); //args[1], use args[1] target test file, was "testoutput.txt"
         System.out.println(target.getFileName());
 
         Charset charset = Charset.forName("US-ASCII");
@@ -37,23 +35,9 @@ public class LineSorter {
             System.out.println(e.getMessage());
         }
 
-//        Collections.sort(lines, );
-//        lines.sort(lines, lines);
-        Collections.sort(lines );{
-//            @Override
-//            public int compare(Integer o1, Integer o2) {
-//                return 0;
-//            }
+        Collections.sort(lines);
 
-//            public int compare(Integer o1, Integer o2) {
-//                if (lines.get(0).length() != lines.get(1).length())
-//                    return (lines.get(0).length() - lines.get(1).length());
-//                else {
-//                    return (o1.number - o2.number);
-//                }
-//            }
-        }
-
+        lines.sort((s1, s2) -> Math.abs(s1.length() - "intelligent".length()) - Math.abs(s2.length() - "intelligent".length()));
         try (BufferedWriter writer = Files.newBufferedWriter(target, charset))
         {
             Iterator<String> iterator = lines.iterator();
