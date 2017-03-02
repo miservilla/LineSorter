@@ -15,10 +15,8 @@ public class LineSorter {
 
     public static void main(String[] args) throws IOException {
 
-        Path source = Paths.get("testinput.txt"); //args[0], use args[0] for source text file, was "testinput.txt"
-        System.out.println(source.getFileName());
-        Path target = Paths.get("testoutput.txt"); //args[1], use args[1] target test file, was "testoutput.txt"
-        System.out.println(target.getFileName());
+        Path source = Paths.get("testinput.txt"); //for source test file
+        Path target = Paths.get("testoutput.txt"); //for target test file
 
         Charset charset = Charset.forName("US-ASCII");
 
@@ -37,7 +35,10 @@ public class LineSorter {
 
         Collections.sort(lines);
 
-        lines.sort((s1, s2) -> Math.abs(s1.length() - "intelligent".length()) - Math.abs(s2.length() - "intelligent".length())); //http://stackoverflow.com/questions/7575761/sort-arraylist-of-strings-by-length
+        lines.sort((s1, s2) -> Math.abs(s1.length() - "intelligent".length()) -
+                Math.abs(s2.length() - "intelligent".length()));
+        //http://stackoverflow.com/questions/7575761/
+        // sort-arraylist-of-strings-by-length
         try (BufferedWriter writer = Files.newBufferedWriter(target, charset))
         {
             Iterator<String> iterator = lines.iterator();
