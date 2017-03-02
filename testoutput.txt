@@ -1,11 +1,11 @@
+
+
+
 Only a test.
 This is a test.
 some are lowercase
 A test of your code.
 some even were blank
-
-
-
 1234 some have numbers
   Some lines have white space
 some lines are the same length A

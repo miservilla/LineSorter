@@ -1,28 +1,20 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-
 /**
  * @author Michael Servilla
  * @version date 2017-02-28
  */
 public class LineSorter {
-
     public static void main(String[] args) throws IOException {
-
         Path source = Paths.get("testinput.txt"); //for source test file
         Path target = Paths.get("testoutput.txt"); //for target test file
-
-        Charset charset = Charset.forName("US-ASCII");
-
         ArrayList<String> lines = new ArrayList<>();
-
-        try (BufferedReader reader = Files.newBufferedReader(source, charset))
+        try (BufferedReader reader = Files.newBufferedReader(source))
         {
             String line = null;
             while ((line = reader.readLine()) != null) {
@@ -32,14 +24,12 @@ public class LineSorter {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
         Collections.sort(lines);
-
-        lines.sort((s1, s2) -> Math.abs(s1.length() - "intelligent".length()) -
-                Math.abs(s2.length() - "intelligent".length()));
+        lines.sort((s1, s2) -> (s1.length() - "line".length()) -
+                (s2.length() - "line".length()));
         //http://stackoverflow.com/questions/7575761/
         // sort-arraylist-of-strings-by-length
-        try (BufferedWriter writer = Files.newBufferedWriter(target, charset))
+        try (BufferedWriter writer = Files.newBufferedWriter(target))
         {
             Iterator<String> iterator = lines.iterator();
 
