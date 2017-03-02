@@ -18,15 +18,14 @@ public class LineSorter {
         {
             String line = null;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
                 lines.add(line);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         Collections.sort(lines);
-        lines.sort((s1, s2) -> (s1.length() - "line".length()) -
-                (s2.length() - "line".length()));
+        lines.sort((s1, s2) -> (s1.length() - "line".length()) - (s2.length() -
+                "line".length()));
         //http://stackoverflow.com/questions/7575761/
         // sort-arraylist-of-strings-by-length
         try (BufferedWriter writer = Files.newBufferedWriter(target))
